@@ -121,7 +121,7 @@
     <Content Include="Assets\TrafficBludenz.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\TrafficBregent.txt">
+    <Content Include="Assets\TrafficBregenz.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\TrafficDornbirn.txt">

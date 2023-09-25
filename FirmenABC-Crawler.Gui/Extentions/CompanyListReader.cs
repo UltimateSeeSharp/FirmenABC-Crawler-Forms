@@ -17,6 +17,9 @@ namespace FirmenABC_Crawler.Gui.Extentions
             {
                 foreach (Enum sector in Enum.GetValues(typeof(Sector)))
                 {
+                    if (Convert.ToInt32(sector) == (int)Sector.GasStation && Convert.ToInt32(district) == (int)District.Bludenz)
+                        continue;
+
                     var json = File.ReadAllText($"Assets\\{sector}{district}.txt");
                     var newCompanies = JsonConvert.DeserializeObject<List<Company>>(json);
                     companies.AddRange(newCompanies);
