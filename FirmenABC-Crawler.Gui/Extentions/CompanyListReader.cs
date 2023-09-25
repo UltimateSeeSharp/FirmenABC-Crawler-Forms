@@ -17,11 +17,16 @@ namespace FirmenABC_Crawler.Gui.Extentions
             {
                 foreach (Enum sector in Enum.GetValues(typeof(Sector)))
                 {
-                    if (Convert.ToInt32(sector) == (int)Sector.GasStation && Convert.ToInt32(district) == (int)District.Bludenz)
+                    if ((Sector)sector == Sector.GasStation && (District)district == District.Bludenz)
                         continue;
 
                     var json = File.ReadAllText($"Assets\\{sector}{district}.txt");
                     var newCompanies = JsonConvert.DeserializeObject<List<Company>>(json);
+                    foreach (var company in companies)
+                    {
+                        company.Sector = (Sector)sector;
+                        company.District = (District)district;
+                    }
                     companies.AddRange(newCompanies);
                 }
             }

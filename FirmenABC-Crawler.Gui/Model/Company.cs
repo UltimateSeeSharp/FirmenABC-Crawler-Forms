@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using FirmenABC_Crawler.Gui.Model.Enum;
+using Newtonsoft.Json;
 using System.Reflection.Emit;
 
 namespace FirmenABC_Crawler.Gui.Model
@@ -29,5 +30,9 @@ namespace FirmenABC_Crawler.Gui.Model
         public string FoundingDate { get; set; }
 
         public string Owner { get; set; }
+
+        public District District { get; set; }
+
+        public Sector Sector { get; set; }
     }
 }

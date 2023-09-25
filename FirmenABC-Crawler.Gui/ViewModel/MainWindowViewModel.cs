@@ -12,6 +12,8 @@ namespace FirmenABC_Crawler.Gui.ViewModel
     internal class MainWindowViewModel : BaseViewModel
     {
         private List<Company> _allCompanies = null;
+        private List<Sector> _selectedSectors = new List<Sector>();
+        private List<District> _selectedDistricts = new List<District>();
 
         public MainWindowViewModel()
         {
@@ -35,12 +37,21 @@ namespace FirmenABC_Crawler.Gui.ViewModel
 
         void RefreshCompanies()
         {
-            Companies = _allCompanies.Where(x => x.BusinessDesc.ToLower().Contains(SearchText.ToLower())
+            //  Search term sorted
+            List<Company> companies = _allCompanies.Where(x => x.BusinessDesc.ToLower().Contains(SearchText.ToLower())
                                               || x.Name.ToLower().Contains(SearchText.ToLower())
                                               || x.Street.ToLower().Contains(SearchText.ToLower())
                                               || x.City.ToLower().Contains(SearchText.ToLower())
                                               || x.FoundingDate.ToLower().Contains(SearchText.ToLower())).ToList();
-            OnPropertyChanged(nameof(Companies));
+
+            Companies = companies;
+
+            //  Sector sorted
+
+            //List<Company> sectorSorted = companies.Select(x => x.District == );
+            //foreach
+            //
+            //OnPropertyChanged(nameof(Companies));
         }
 
         private Company _selectedCompany = null;
@@ -78,9 +89,12 @@ namespace FirmenABC_Crawler.Gui.ViewModel
         public bool TrafficActive { get; set; }
         public bool GasStationActive { get; set; }
 
-        public void filterChanged(object sender)
+        public void FilterChanged(object sender)
         {
             District district = (District)Enum.Parse(typeof(District), (sender as CheckBox).Content.ToString());
+            _selectedDistricts.Add(district);
         }
+
+
     }
 }

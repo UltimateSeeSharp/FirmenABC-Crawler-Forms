@@ -14,7 +14,7 @@ namespace FirmenABC_Crawler.Gui.View
 
         private void CheckBox_Click(object sender, RoutedEventArgs e)
         {
-            _mainWindowViewModel.filterChanged(sender);
+            _mainWindowViewModel.FilterChanged(sender);
         }
     }
 }
